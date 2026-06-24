@@ -1,0 +1,47 @@
+import { OdooProductRecord, OdooTicketRecord } from "../odoo/odoo.types";
+type PortalDescriptionInput = {
+    issueCategory?: string;
+    productId?: number;
+    productCode?: string;
+    productName?: string;
+    model?: string;
+    configurationId?: string;
+    customerName?: string;
+    volt?: string;
+    amp?: string;
+    rating?: string;
+    customerDescription?: string;
+    comments?: PortalTicketComment[];
+};
+export type PortalTicketComment = {
+    id: string;
+    author: string;
+    role?: string;
+    message: string;
+    createdAt: string;
+};
+export type ParsedPortalDescription = {
+    issueCategory?: string;
+    lotId?: number;
+    productId?: number;
+    configurationId?: string;
+    customerName?: string;
+    volt?: string;
+    amp?: string;
+    rating?: string;
+    productName?: string;
+    model?: string;
+    serialNumber?: string;
+    customerDescription?: string;
+    comments: PortalTicketComment[];
+};
+export declare function deriveBrandCode(product: Pick<OdooProductRecord, "display_name" | "make" | "name">): string;
+export declare function deriveModelCode(product: Pick<OdooProductRecord, "code" | "default_code" | "name" | "rm_code">): string;
+export declare function derivePortalProductCode(product: Pick<OdooProductRecord, "id" | "code" | "default_code" | "name" | "rm_code">): string;
+export declare function extractTicketNumber(ticket: Pick<OdooTicketRecord, "name" | "ticket_ref">): string;
+export declare function mapPriorityLabel(priority?: string): string;
+export declare function mapStageToPortalStatus(stageName?: string): "Created" | "Closed" | "Resolved" | "Dispatched" | "Replacement Approved" | "In Service" | "Under Review";
+export declare function buildPortalTicketDescription(input: PortalDescriptionInput): string;
+export declare function parsePortalTicketDescription(description?: string): ParsedPortalDescription;
+export declare function extractIssueCategory(ticket: Pick<OdooTicketRecord, "description" | "name">): string;
+export {};

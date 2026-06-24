@@ -1,0 +1,1 @@
+import{n as e}from"./PageHeader-b4sK_0lV.js";import{a as t}from"./card-DAXWxhit.js";var n=e();function r({className:e}){return(0,n.jsx)(`div`,{className:t(`animate-pulse rounded-md bg-slate-200`,e)})}export{r as t};
