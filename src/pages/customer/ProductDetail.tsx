@@ -3,7 +3,7 @@ import { ClipboardPlus, History } from "lucide-react";
 import { PageHeader } from "../../components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
-import { Button, buttonVariants } from "../../components/ui/button";
+import { buttonVariants } from "../../components/ui/button";
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();

@@ -1,5 +1,9 @@
 const TOKEN_STORAGE_KEY = "neenjas.auth.token";
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "http://localhost:4000/api";
+const API_BASE_URL = normalizeApiBaseUrl(
+  (import.meta.env.VITE_API_URL as string | undefined) ??
+    (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
+    "http://localhost:4000/api",
+);
 
 export function getApiBaseUrl() {
   return API_BASE_URL;
@@ -28,7 +32,10 @@ export function getAuthorizationHeaders() {
 
 export async function apiRequest<T>(path: string, init: RequestInit = {}) {
   const headers = new Headers(init.headers);
-  headers.set("Content-Type", "application/json");
+
+  if (!(init.body instanceof FormData) && !headers.has("Content-Type")) {
+    headers.set("Content-Type", "application/json");
+  }
 
   const authorizationHeaders = getAuthorizationHeaders();
   for (const [key, value] of Object.entries(authorizationHeaders)) {
@@ -61,4 +68,8 @@ export async function apiRequest<T>(path: string, init: RequestInit = {}) {
   }
 
   return (await response.json()) as T;
+}
+
+function normalizeApiBaseUrl(value: string) {
+  return value.replace(/\/+$/, "");
 }

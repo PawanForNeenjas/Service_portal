@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { LogOut, Menu, Sparkles, X } from "lucide-react";
 import { AppSidebar } from "./AppSidebar";
 import { MobileNav } from "./MobileNav";
-import { getNavigationForRole, getZoneForRole, zoneConfig, getZoneStyles, type Zone } from "./navigation";
+import { getNavigationForRole, getZoneForRole, zoneConfig, getZoneStyles } from "./navigation";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { GlobalSearch } from "../components/GlobalSearch";
 import { NotificationCenter } from "../components/NotificationCenter";

@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useDomainData } from "../../contexts/DomainDataContext";
 import type { PortalProductConfigurationDto, PortalProductDetailDto, PortalProductSummaryDto } from "../../types/dto";
@@ -9,9 +9,9 @@ export function useProductService() {
   const { user } = useAuth();
   const { state, getProductView } = useDomainData();
   const products = getVisibleProducts(state.products, user);
-  const visibleProductIds = new Set(products.map((product) => product.id));
-  const visibleCustomerIds = new Set(products.map((product) => product.customerId));
-  const visibleDealerIds = new Set(products.map((product) => product.dealerId));
+  const visibleProductIds = useMemo(() => new Set(products.map((product) => product.id)), [products]);
+  const visibleCustomerIds = useMemo(() => new Set(products.map((product) => product.customerId)), [products]);
+  const visibleDealerIds = useMemo(() => new Set(products.map((product) => product.dealerId)), [products]);
   const getVisibleProductView = useCallback(
     (productId: string) => (visibleProductIds.has(productId) ? getProductView(productId) : undefined),
     [getProductView, visibleProductIds],

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ClipboardPlus } from "lucide-react";
 import { PageHeader } from "../../components/PageHeader";
 import { Card, CardContent } from "../../components/ui/card";
-import { Button, buttonVariants } from "../../components/ui/button";
+import { buttonVariants } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 
 export default function TicketList() {

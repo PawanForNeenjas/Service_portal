@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: neenjas-service-portal-backend
+    runtime: node
+    rootDir: backend
+    branch: main
+    autoDeployTrigger: off
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /health
+    disk:
+      name: portal-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 20.19.0
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 1h
+      - key: AUTH_TEST_MODE
+        value: "false"
+      - key: PORTAL_USER_STORE_PATH
+        value: /var/data/portal-users.json
+      - key: PORTAL_ADMIN_PASSWORD
+        sync: false
+      - key: PORTAL_SUPPORT_PASSWORD
+        sync: false
+      - key: ODOO_URL
+        sync: false
+      - key: ODOO_DB
+        sync: false
+      - key: ODOO_USERNAME
+        sync: false
+      - key: ODOO_PASSWORD
+        sync: false
+      - key: ODOO_RPC_PROTOCOL
+        value: jsonrpc

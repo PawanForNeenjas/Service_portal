@@ -79,7 +79,7 @@ export function GlobalSearch({ compact = false, className }: GlobalSearchProps) 
     return allResults
       .filter((result) => `${result.title} ${result.description}`.toLowerCase().includes(normalized))
       .slice(0, 8);
-  }, [open, products, query, tickets, user]);
+  }, [products, query, tickets, user]);
 
   return (
     <div className={cn("relative min-w-0", compact ? "block" : "hidden flex-1 md:block", className)}>

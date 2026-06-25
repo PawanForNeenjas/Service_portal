@@ -3,8 +3,13 @@ backend/node_modules/
 
 dist/
 backend/dist/
+backend/data/portal-users.json
 
 .env
 backend/.env
+.env.*
+backend/.env.*
+!.env.example
+!backend/.env.example
 
 .vscode/

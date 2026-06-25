@@ -2,7 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 import { PageHeader } from "../../components/PageHeader";
 import { Card, CardContent } from "../../components/ui/card";
-import { Button, buttonVariants } from "../../components/ui/button";
+import { buttonVariants } from "../../components/ui/button";
 
 /* ===========================================================================
    SUPPORT SUCCESS

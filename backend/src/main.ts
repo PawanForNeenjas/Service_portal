@@ -39,6 +39,7 @@ async function bootstrap() {
   const port = config.get<number>("PORT", 4000);
   logger.log(`CORS origins: ${allowedOrigins.join(", ") || "loopback only"}`);
   await app.listen(port);
+  logger.log(`Service listening on port ${port}`);
 }
 
 void bootstrap();

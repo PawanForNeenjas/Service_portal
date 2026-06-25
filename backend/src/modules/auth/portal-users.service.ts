@@ -40,7 +40,7 @@ export class PortalUsersService {
       role: Role.ADMIN,
       status: PortalUserStatus.ACTIVE,
       customerName: "",
-      password: this.config.get<string>("PORTAL_ADMIN_PASSWORD", "Admin@12345"),
+      password: this.getSeedPassword("PORTAL_ADMIN_PASSWORD", "Admin@12345"),
     }) || seeded;
 
     seeded = await this.ensureSeededUser(store, {
@@ -50,7 +50,7 @@ export class PortalUsersService {
       role: Role.CUSTOMER_SERVICE,
       status: PortalUserStatus.ACTIVE,
       customerName: "",
-      password: this.config.get<string>("PORTAL_SUPPORT_PASSWORD", "Support@12345"),
+      password: this.getSeedPassword("PORTAL_SUPPORT_PASSWORD", "Support@12345"),
     }) || seeded;
 
     if (seeded) {
@@ -350,6 +350,22 @@ export class PortalUsersService {
 
     this.logger.log(`Seeded portal account for ${input.email}`);
     return true;
+  }
+
+  private getSeedPassword(configKey: "PORTAL_ADMIN_PASSWORD" | "PORTAL_SUPPORT_PASSWORD", fallback: string) {
+    const configuredPassword = this.config.get<string>(configKey)?.trim();
+    const testAuthEnabled = this.config.get<string>("AUTH_TEST_MODE", "true") !== "false";
+
+    if (configuredPassword) {
+      return configuredPassword;
+    }
+
+    if (testAuthEnabled) {
+      this.logger.warn(`${configKey} is empty; using local development fallback credentials`);
+      return fallback;
+    }
+
+    throw new Error(`${configKey} must be configured before seeding portal users in production`);
   }
 
   private async withStore<T>(mutator: (store: PortalAuthStore) => Promise<T> | T) {

@@ -1,1 +1,0 @@
-import{n as e,t}from"./PageHeader-b4sK_0lV.js";var n=e();function r(){return(0,n.jsx)(`div`,{className:`space-y-6`,children:(0,n.jsx)(t,{title:`My Stats`,description:`View your ticket metrics.`})})}export{r as default};

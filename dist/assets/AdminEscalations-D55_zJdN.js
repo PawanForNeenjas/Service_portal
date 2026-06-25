@@ -1,1 +1,0 @@
-import{n as e,t}from"./PageHeader-b4sK_0lV.js";var n=e();function r(){return(0,n.jsx)(`div`,{className:`space-y-6`,children:(0,n.jsx)(t,{title:`Escalations`,description:`Review priority issues.`})})}export{r as default};

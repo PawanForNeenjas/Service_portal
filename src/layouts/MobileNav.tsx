@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Home, Boxes, TicketCheck, ClipboardPlus, Settings } from "lucide-react";
-import { getNavigationForRole, getZoneForRole, type Zone } from "./navigation";
+import { getZoneForRole, type Zone } from "./navigation";
 import { useAuthService } from "../services/api/auth";
 import { cn } from "../utils/cn";
 import { isWarrantyModuleEnabled } from "../utils/releaseFlags";

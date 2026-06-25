@@ -9,7 +9,6 @@ import type {
   Ticket,
   TicketPriority,
   TicketStatus,
-  User,
   Warranty,
 } from "./domain";
 import type { PortalUserStatus, Role } from "./index";

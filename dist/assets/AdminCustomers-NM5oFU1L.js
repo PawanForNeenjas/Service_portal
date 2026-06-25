@@ -1,1 +1,0 @@
-import{n as e,t}from"./PageHeader-b4sK_0lV.js";var n=e();function r(){return(0,n.jsx)(`div`,{className:`space-y-6`,children:(0,n.jsx)(t,{title:`Customers`,description:`View customer accounts.`})})}export{r as default};

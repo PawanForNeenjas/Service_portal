@@ -1,16 +1,12 @@
 import { ChevronRight, Home } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { getNavigationForRole, getZoneForRole, findNavItem, zoneConfig } from "../layouts/navigation";
+import { findNavItem } from "../layouts/navigation";
 import { useAuthService } from "../services/api/auth";
 
 export function Breadcrumbs() {
   const location = useLocation();
   const { user, getZonePath } = useAuthService();
   const path = location.pathname;
-
-  // Get zone info
-  const zone = user?.role ? getZoneForRole(user.role) : null;
-  const zoneInfo = zone ? zoneConfig[zone] : null;
 
   // Find the navigation item for this path
   const navItem = user?.role ? findNavItem(path, user.role) : null;

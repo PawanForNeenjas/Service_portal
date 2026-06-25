@@ -7,7 +7,6 @@ import { Timeline } from "../components/Timeline";
 import { Badge } from "../components/ui/badge";
 import { Button, buttonVariants } from "../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { useAuthService } from "../services/api/auth";
 import { listPortalTickets } from "../services/api/tickets";
 import { useToast } from "../contexts/ToastContext";
 import { ticketStages } from "../data/tickets";
