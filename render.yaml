@@ -3,7 +3,7 @@ services:
     name: neenjas-service-portal-backend
     runtime: node
     rootDir: backend
-    branch: main
+    branch: master
     autoDeployTrigger: off
     buildCommand: npm ci && npm run build
     startCommand: npm run start:prod
